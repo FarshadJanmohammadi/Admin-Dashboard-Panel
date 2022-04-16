@@ -36,19 +36,20 @@
           display: flex;
           flex-wrap: wrap;
           gap: 30px;
-          justify-content: space-around;
 
           .formInput {
             width: 40%;
+
+            &:first-child {
+              .icon {
+                cursor: pointer;
+              }
+            }
 
             labal {
               display: flex;
               align-items: center;
               gap: 10px;
-
-              .icon {
-                color: red;
-              }
             }
 
             input {

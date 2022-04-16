@@ -5,14 +5,14 @@ import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUpload
 
 import "./new.scss";
 
-const New = () => {
+const New = ({ inputs, title }) => {
   return (
     <div className="new">
       <Sidebar />
       <div className="newContainer">
         <Navbar />
         <div className="top">
-          <h1>Add New Uer</h1>
+          <h1>{title}</h1>
         </div>
         <div className="bottom">
           <div className="left">
@@ -26,34 +26,18 @@ const New = () => {
                 </label>
                 <input type="file" id="file" style={{ display: "none" }} />
               </div>
+
+              {inputs.map((input) => (
+                <div className="formInput" key={input.id}>
+                  <label>{input.label}</label>
+                  <input type={input.type} placeholder={input.placeholder} />
+                </div>
+              ))}
               <div className="formInput">
                 <label>UserName</label>
                 <input type="text" placeholder="john_doe" />
               </div>
-              <div className="formInput">
-                <label>name and surname</label>
-                <input type="text" placeholder="John Doe" />
-              </div>
-              <div className="formInput">
-                <label>Email</label>
-                <input type="email" placeholder="john_doe@gmail.com" />
-              </div>
-              <div className="formInput">
-                <label>Phone</label>
-                <input type="number" placeholder="+989186778088" />
-              </div>
-              <div className="formInput">
-                <label>Password</label>
-                <input type="password" />
-              </div>
-              <div className="formInput">
-                <label>Adress</label>
-                <input type="text" placeholder="Tehran,street 2, Tehran" />
-              </div>
-              <div className="formInput">
-                <label>Iran</label>
-                <input type="text" />
-              </div>
+
               <button>Send</button>
             </form>
           </div>
