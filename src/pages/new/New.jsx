@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../../components/navbar/Navbar";
 import Sidebar from "../../components/sidebar/Sidebar";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
@@ -6,6 +6,8 @@ import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUpload
 import "./new.scss";
 
 const New = ({ inputs, title }) => {
+  const [file, setFile] = useState("");
+
   return (
     <div className="new">
       <Sidebar />
@@ -16,7 +18,14 @@ const New = ({ inputs, title }) => {
         </div>
         <div className="bottom">
           <div className="left">
-            <img src="https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg" alt="" />
+            <img
+              src={
+                file
+                  ? URL.createObjectURL(file)
+                  : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
+              }
+              alt=""
+            />
           </div>
           <div className="right">
             <form>
@@ -24,7 +33,12 @@ const New = ({ inputs, title }) => {
                 <label htmlFor="file">
                   Image: <DriveFolderUploadOutlinedIcon className="icon" />
                 </label>
-                <input type="file" id="file" style={{ display: "none" }} />
+                <input
+                  onChange={(e) => setFile(e.target.files[0])}
+                  type="file"
+                  id="file"
+                  style={{ display: "none" }}
+                />
               </div>
 
               {inputs.map((input) => (
